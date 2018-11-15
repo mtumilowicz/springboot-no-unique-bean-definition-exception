@@ -2,8 +2,8 @@ package com.example.springbootnouniquebeandefinitionexception;
 
 import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,9 +11,13 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-@RequiredArgsConstructor
 @Getter
 public class Consumer {
     String first;
     String second;
+    
+    public Consumer(@Qualifier("first") String first, @QualifierForSecondString String second) {
+        this.first = first;
+        this.second = second;
+    }
 }

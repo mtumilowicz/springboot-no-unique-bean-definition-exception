@@ -9,13 +9,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class Producer {
     
-    @Bean
+    @Bean("first")
     public String getFirst() {
         return "first";
     }
 
     @Bean
+    @QualifierForSecondString
     public String getSecond() {
-        return "first";
+        return "second";
     }
 }
