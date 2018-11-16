@@ -1,6 +1,7 @@
 package com.example.springbootnouniquebeandefinitionexception;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,5 +19,11 @@ public class Producer {
     @QualifierForSecondString
     public String getSecond() {
         return "second";
+    }
+    
+    @Bean
+    @Primary
+    public String getThird() {
+        return "third";
     }
 }

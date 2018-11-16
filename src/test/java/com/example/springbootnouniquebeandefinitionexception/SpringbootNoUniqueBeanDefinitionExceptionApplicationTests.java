@@ -20,6 +20,7 @@ public class SpringbootNoUniqueBeanDefinitionExceptionApplicationTests {
     public void contextLoads() {
         assertThat(consumer.getFirst(), is("first"));
         assertThat(consumer.getSecond(), is("second"));
+        assertThat(consumer.getThird(), is("third"));
     }
 
 }
