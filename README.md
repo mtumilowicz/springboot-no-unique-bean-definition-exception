@@ -9,7 +9,8 @@ optional semantic qualifiers. This means that qualifier values,
 even with the bean name fallback, always have narrowing semantics 
 within the set of type matches. 
 
-Because autowiring by type may lead to multiple candidates, 
+Because autowiring by type may lead to multiple candidates
+(`NoUniqueBeanDefinitionException`), 
 it is often necessary to have more control over the selection 
 process. One way to accomplish this is with Spring’s `@Primary` 
 annotation. `@Primary` indicates that a particular bean should 
@@ -36,3 +37,59 @@ considered within those type-selected candidates only (for example, matching an
 account qualifier against beans marked with the same qualifier label).
 
 # project description
+We are giving examples of producing beans with:
+* `@Primary`
+* `@Qualifier`
+* `@Bean` with name attribute
+and injecting them (using @Qualifier or default)
+
+## details
+* we have `Producer` class, which produces beans:
+    ```
+    @Bean("first")
+    public String getFirst() {
+        return "first";
+    }
+
+    @Bean
+    @QualifierForSecondString
+    public String getSecond() {
+        return "second";
+    }
+    
+    @Bean
+    @Primary
+    public String getThird() {
+        return "third";
+    }    
+    ```
+* we have `Consumer` class with fields:
+    ```
+    String first;
+    String second;
+    String third;    
+    ```
+    and injection by constructor:
+    ```
+    public Consumer(@Qualifier("first") String first, 
+                    @QualifierForSecondString String second,
+                    String third) {
+            this.first = first;
+            this.second = second;
+            this.third = third;
+    }    
+    ```
+# tests
+In `SpringbootNoUniqueBeanDefinitionExceptionApplicationTests` we 
+verify if all injections were made without errors:
+```
+@Autowired
+Consumer consumer;
+
+@Test
+public void contextLoads() {
+    assertThat(consumer.getFirst(), is("first"));
+    assertThat(consumer.getSecond(), is("second"));
+    assertThat(consumer.getThird(), is("third"));
+}
+```
