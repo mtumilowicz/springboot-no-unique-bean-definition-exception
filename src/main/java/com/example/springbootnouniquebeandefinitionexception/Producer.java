@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class Producer {
-    
+
     @Bean("first")
     public String getFirst() {
         return "first";
@@ -20,7 +20,7 @@ public class Producer {
     public String getSecond() {
         return "second";
     }
-    
+
     @Bean
     @Primary
     public String getThird() {

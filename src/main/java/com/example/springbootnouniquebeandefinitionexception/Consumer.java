@@ -16,8 +16,8 @@ public class Consumer {
     String first;
     String second;
     String third;
-    
-    public Consumer(@Qualifier("first") String first, 
+
+    public Consumer(@Qualifier("first") String first,
                     @QualifierForSecondString String second,
                     String third) {
         this.first = first;
