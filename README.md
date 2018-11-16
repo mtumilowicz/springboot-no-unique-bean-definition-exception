@@ -1,7 +1,7 @@
 # springboot-no-unique-bean-definition-exception
-How to deal with NoUniqueBeanDefinitionException.
+How to deal with `NoUniqueBeanDefinitionException`.
 
-_Reference: https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#spring-core
+_Reference_: https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#spring-core
 
 # preface
 `@Autowired` is fundamentally about type-driven injection with 
@@ -37,7 +37,7 @@ considered within those type-selected candidates only (for example, matching an
 account qualifier against beans marked with the same qualifier label).
 
 # project description
-We are giving examples of producing beans with:
+We provide examples of producing beans with:
 * `@Primary`
 * `@Qualifier`
 * `@Bean` with name attribute
@@ -81,7 +81,7 @@ and injecting them (using @Qualifier or default)
     ```
 # tests
 In `SpringbootNoUniqueBeanDefinitionExceptionApplicationTests` we 
-verify if all injections were made without errors:
+verify if all injections were made without errors and are correct:
 ```
 @Autowired
 Consumer consumer;
