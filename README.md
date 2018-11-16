@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/mtumilowicz/springboot-no-unique-bean-definition-exception.svg?branch=master)](https://travis-ci.com/mtumilowicz/springboot-no-unique-bean-definition-exception)
+
 # springboot-no-unique-bean-definition-exception
 How to deal with `NoUniqueBeanDefinitionException`.
 
